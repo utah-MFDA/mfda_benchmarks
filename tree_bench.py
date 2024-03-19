@@ -5,7 +5,7 @@ width, depth = [int(i) for i in sys.argv[1:]]
 def tree(output, depth):
     left = f"{output}__{depth}_l"
     right = f"{output}__{depth}_r"
-    print(f"diffmix_25px_0 mix_{output} (.a_fluid({left}), .b_fluid({right}), .out_fluid({output});")
+    print(f"diffmix_25px_0 mix_{output} (.a_fluid({left}), .b_fluid({right}), .out_fluid({output}));")
     print(f"wire {left}, {right};")
     if depth == 0:
         return [left, right]
@@ -13,7 +13,7 @@ def tree(output, depth):
         return tree(left, depth - 1) + tree(right, depth - 1)
 
 print(f"""module binary_tree_{width}_{depth} (""")
-print(",".join([f"output out_{i}" for i in range(0,width)] + [f"input_{j}" for j in range(0,width*2**depth)]))
+print(",".join([f"output out_{i}" for i in range(0,width)] + [f"input input_{j}" for j in range(0,width*2**depth)]))
 print(");")
 
 inpts = [t for i in range(0, width) for t in tree(f"input_{i}", depth-1)]
