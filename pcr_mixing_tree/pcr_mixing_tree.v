@@ -1,3 +1,9 @@
+/*
+ Sources:
+F. Su and K. Chakrabarty. 2006. Benchmarks for digital microfluidic biochip design and synthesis. https://ece.duke.edu/fs/Benchmark.pdf. Archived at https://microfluidics.cs.ucr.edu/dmfb_static_simulator/benchmarks
+
+ Wajid Hassan Minhass, Paul Pop, Jan Madsen, and Felician Stefan Blaga. 2012. Architectural Synthesis of Flow-based Microfluidic Large-scale Integration Biochips. In Proceedings of the 2012 International Conference on Compilers, Architectures and Synthesis for Embedded Systems (CASES ’12). ACM, New York, NY, USA, 181–190. https://doi.org/10.1145/2380403.2380437
+ */
 module pcr_mixing_tree(input tris_hcl, kcl, bovine_serum_albumin, gelatin, primer, beosynucletide_triphosphate, amplitag_dna, lambda_dna, output result);
 
   wire m1_out, m2_out, m3_out, m4_out, m5_out, m6_out;
