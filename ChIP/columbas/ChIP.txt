@@ -1,0 +1,91 @@
+module:
+
+# 1: module name
+# 2: module type (general device: d; in-/outlet: p)
+# if (2==d)
+# 	3: container (chamber: c; ring: r)
+#	4: pump (on: 1; off: 0)
+# 	5: sieve valve (on: 1; off: 0)
+# 	6: cell trap (on: 1; off: 0), realized by separation valve
+#	if (3==c)
+#		7: normal valves at ends (on: 1; off: 0)
+# n-2:	x-axis sidelength
+# n-1:	y-axis sidelength
+# n: 	z-axis sidelength
+
+M1 d r 1 1 0 5400 8300 50
+M2 d r 1 1 0 9100 4600 50
+M3 d r 1 1 0 9100 4600 50
+M4 d r 1 1 0 9100 4600 50
+M5 d r 1 1 0 9100 4600 50
+# RC width: at least 6 times larger than minimum channel spacing
+RC1 d c 0 1 0 1 3000 1200 100
+RC2 d c 0 1 0 1 3000 1200 100
+RC3 d c 0 1 0 1 3000 1200 100
+RC4 d c 0 1 0 1 3000 1200 100
+i_1 p 1500 1500
+i_2 p 1500 1500
+i_3 p 1500 1500
+i_4 p 1500 1500
+i_5 p 1500 1500
+i_6 p 1500 1500
+i_7 p 1500 1500
+i_8 p 1500 1500
+i_9 p 1500 1500
+i_10 p 1500 1500
+i_11 p 1500 1500
+o_wf1 p 1500 1500
+o_wf2 p 1500 1500
+o_wf3 p 1500 1500
+o_wf4 p 1500 1500
+o_wf5 p 1500 1500
+o_wf6 p 1500 1500
+fin
+
+netlist:
+		# format: from_comp_name, to_comp_name, weight
+i_1 M1 1
+i_2 M1 1
+i_3 M1 1
+i_4 M1 1
+i_5 M1 1
+i_6 M1 1
+i_7 M1 1
+i_8 M1 1
+i_9 M1 1
+i_10 M2 1
+i_11 M3 1
+i_11 M4 1
+i_11 M5 1
+		# M1 output
+M1 o_wf1 1
+M1 o_wf2 1
+M1 M2 1
+M1 M3 1
+M1 M4 1
+M1 M5 1
+		# M2--M5 output
+M2 RC1 1
+M3 RC2 1
+M4 RC3 1
+M5 RC4 1
+		# RC1~RC4 output
+RC1 o_wf3 1
+RC2 o_wf4 1
+RC3 o_wf5 1
+RC4 o_wf6 1
+fin
+
+conflict:
+		# format: total_num {comp_name...}
+fin
+
+parallel:
+		# format: total_num {comp_name...}
+4 M2 M3 M4 M5
+4 RC1 RC2 RC3 RC4
+fin
+
+group:
+		# format: total_num {comp_name...}
+fin

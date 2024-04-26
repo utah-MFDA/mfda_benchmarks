@@ -1,0 +1,10 @@
+min_spacing:
+100
+flow_channel_width:
+100
+control_channel_width:
+30
+control_inlet_dimension:
+1500
+inlet_dis:
+2000

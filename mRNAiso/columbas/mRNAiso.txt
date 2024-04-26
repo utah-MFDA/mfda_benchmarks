@@ -1,0 +1,103 @@
+module:
+
+# 1: module name
+# 2: module type (general device: d; in-/outlet: p)
+# if (2==d)
+# 	3: container (chamber: c; ring: r)
+#	4: pump (on: 1; off: 0)
+# 	5: sieve valve (on: 1; off: 0)
+# 	6: cell trap (on: 1; off: 0), realized by separation valve
+#	if (3==c)
+#		7: normal valves at ends (on: 1; off: 0)
+# n-2:	x-axis sidelength
+# n-1:	y-axis sidelength
+# n: 	z-axis sidelength
+
+M1 d r 1 1 0 5400 4600 50
+M2 d r 1 1 0 5400 4600 50
+M3 d r 1 1 0 5400 4600 50
+M4 d r 1 1 0 5400 4600 50
+# RC width: at least 6 times larger than minimum channel spacing
+RC1 d c 0 1 0 1 3000 1200 100
+RC2 d c 0 1 0 1 3000 1200 100
+RC3 d c 0 1 0 1 3000 1200 100
+RC4 d c 0 1 0 1 3000 1200 100
+p_i p 1500 1500
+p_l p 1500 1500
+p_c1 p 1500 1500
+p_c2 p 1500 1500
+p_c3 p 1500 1500
+p_c4 p 1500 1500
+p_bi p 1500 1500
+p_lo p 1500 1500
+p_co1 p 1500 1500
+p_co2 p 1500 1500
+p_co3 p 1500 1500
+p_co4 p 1500 1500
+p_bo p 1500 1500
+wf p 1500 1500
+p_collect1 p 1500 1500
+p_collect2 p 1500 1500
+p_collect3 p 1500 1500
+p_collect4 p 1500 1500
+fin
+
+netlist:
+		# from port
+p_i M1 1
+p_l M1 1
+p_c1 M1 1
+p_i M2 1
+p_l M2 1
+p_c2 M2 1
+p_i M3 1
+p_l M3 1
+p_c3 M3 1
+p_i M4 1
+p_l M4 1
+p_c4 M4 1
+p_bi RC1 1
+p_bi RC2 1
+p_bi RC3 1
+p_bi RC4 1
+		# Mixer 1-4 output
+M1 p_lo 1
+M2 p_lo 1
+M3 p_lo 1
+M4 p_lo 1
+M1 p_co1 1
+M2 p_co2 1
+M3 p_co3 1
+M4 p_co4 1
+M1 RC1 1
+M2 RC2 1
+M3 RC3 1
+M4 RC4 1
+		# Column chamber 1~4
+RC1 wf 1
+RC1 p_collect1 1
+RC1 p_bo 1
+RC2 wf 1
+RC2 p_collect2 1
+RC2 p_bo 1
+RC3 wf 1
+RC3 p_collect3 1
+RC3 p_bo 1
+RC4 wf 1
+RC4 p_collect4 1
+RC4 p_bo 1
+fin
+
+conflict:
+		# format: total_num {comp_name...}
+fin
+
+parallel:
+		# format: total_num {comp_name...}
+4 M1 M2 M3 M4
+4 RC1 RC2 RC3 RC4
+fin
+
+group:
+		# format: total_num {comp_name...}
+fin

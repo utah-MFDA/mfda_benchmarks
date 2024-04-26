@@ -1,0 +1,50 @@
+component:
+
+Mixer M1 6800 3800
+Mixer M2 6800 3800
+ReactionChamber RC1 3000 600
+ReactionChamber RC2 3000 600
+Port p_anti 1500 1500
+Port p_prob 1500 1500
+Port p_kin 1500 1500
+Port wf 1500 1500
+Port wb 1500 1500
+Port wf2 1500 1500
+Port wb2 1500 1500
+fin
+
+netlist:
+		# from port
+p_anti M1 1
+p_anti M2 1
+p_prob M1 1
+p_prob M2 1
+p_kin M1 1
+p_kin M2 1
+		# Mixer 1~2 output
+M1 wf 1
+M1 wb 1
+M1 RC1 1
+M2 wf 1
+M2 wb 1
+M2 RC2 1
+		# Column chamber 1~2
+RC1 wf2 1
+RC1 wb2 1
+RC2 wf2 1
+RC2 wb2 1
+fin
+
+conflict:
+		# format: total_num {comp_name...}
+fin
+
+parallel:
+		# format: total_num {comp_name...}
+2 M1 M2
+2 RC1 RC2
+fin
+
+group:
+		# format: total_num {comp_name...}
+fin
