@@ -1,0 +1,63 @@
+module mRNAiso_3(input cells_in_1, output cells_out_1, collect_1,
+                 input cells_in_2, output cells_out_2, collect_2,
+                 input cells_in_3, output cells_out_3, collect_3,
+                 input cells_in_ctl, cells_out_ctl, collect_ctl,
+                 output waste_out,
+                 input lysis_buffer_in, lysis_in_ctl,  lysis_waste_ctl,
+                 output lysis_buffer_out,
+                 input beads_in, beads_in_ctl, bead_waste_ctl,
+                 output beads_out,
+                 input pump_1, pump_2, pump_3,
+                 input push_line, push_ctl,
+                 input sep_ctl, sieve_ctl,
+                 input waste_ctl);
+  wire lysis_in_1, lysis_1_2, lysis_2_3, lysis_3_out;
+  wire bead_out_1, bead_out_2, bead_out_3;
+
+  valve vlysis_in(.fluid_in(lysis_buffer_in), .fluid_out(lysis_in_1), .air_in(lysis_in_ctl));
+  valve vbead_out(.fluid_in(bead_out_3), .fluid_out(beads_out), .air_in(bead_waste_ctl));
+  mRNAiso one(beads_in, beads_ctl,
+              beads_out_1,
+              cells_in_1, cells_in_ctl, cells_out_ctl,
+              cells_out_1,
+              collect_ctl,
+              collect_1,
+              lysis_in_1, lysis_in_ctl, lysis_in_ctl,
+              lysis_1_2,
+              push_line, push_ctl,
+              pump1, pump2, pump3,
+              sep_ctl,
+              sieve_ctl,
+              waste_ctl,
+              waste_out);
+  mRNAiso two(beads_out_1, beads_ctl,
+              beads_out_2,
+              cells_in_2, cells_in_ctl, cells_out_ctl,
+              cells_out_2,
+              collect_ctl,
+              collect_2,
+              lysis_1_2, lysis_in_ctl, lysis_in_ctl,
+              lysis_2_3,
+              push_line, push_ctl,
+              pump2, pump2, pump3,
+              sep_ctl,
+              sieve_ctl,
+              waste_ctl,
+              waste_out);
+  mRNAiso three(beads_out_2, beads_ctl,
+                beads_out_3,
+                cells_in_3, cells_in_ctl, cells_out_ctl,
+                cells_out_3,
+                collect_ctl,
+                collect_3,
+                lysis_2_3, lysis_in_ctl, lysis_in_ctl,
+                lysis_3_out,
+                push_line, push_ctl,
+                pump3, pump2, pump3,
+                sep_ctl,
+                sieve_ctl,
+                waste_ctl,
+                waste_out);
+  valve vlysis_out(.fluid_in(lysis_3_out), .fluid_out(lysis_buffer_out), .air_in(lysis_waste_ctl));
+
+endmodule
