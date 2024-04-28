@@ -11,11 +11,11 @@ module mRNAiso_2(input cells_in_1, output cells_out_1, collect_1,
                  input sep_ctl, sieve_ctl,
                  input waste_ctl);
   wire lysis_in_1, lysis_1_2, lysis_2_out;
-  wire bead_out_1, bead_out_2;
+  wire beads_out_1, beads_out_2;
 
   valve vlysis_in(.fluid_in(lysis_buffer_in), .fluid_out(lysis_in_1), .air_in(lysis_in_ctl));
   valve vbead_out(.fluid_in(bead_out_2), .fluid_out(beads_out), .air_in(bead_waste_ctl));
-  mRNAiso one(beads_in, beads_ctl,
+  mRNAiso one(beads_in, beads_in_ctl,
               beads_out_1,
               cells_in_1, cells_in_ctl, cells_out_ctl,
               cells_out_1,
@@ -24,12 +24,12 @@ module mRNAiso_2(input cells_in_1, output cells_out_1, collect_1,
               lysis_in_1, lysis_in_ctl, lysis_in_ctl,
               lysis_1_2,
               push_line, push_ctl,
-              pump1, pump2, pump3,
+              pump_1, pump_2, pump_3,
               sep_ctl,
               sieve_ctl,
               waste_ctl,
               waste_out);
-  mRNAiso two(beads_out_1, beads_ctl,
+  mRNAiso two(beads_out_1, beads_in_ctl,
               beads_out_2,
               cells_in_2, cells_in_ctl, cells_out_ctl,
               cells_out_2,
@@ -38,7 +38,7 @@ module mRNAiso_2(input cells_in_1, output cells_out_1, collect_1,
               lysis_1_2, lysis_in_ctl, lysis_in_ctl,
               lysis_2_out,
               push_line, push_ctl,
-              pump2, pump2, pump3,
+              pump_1, pump_2, pump_3,
               sep_ctl,
               sieve_ctl,
               waste_ctl,
