@@ -7,20 +7,17 @@ module mnacidpro_1(input lysis_ctl, wash_ctl, elute_ctl, horiz_ctl, dead_end_ctl
                  output collect_1,
                  output waste, bead_out, buf_out, cell_out);
   wire j1;
-  wire ab_buf_out, ab_bead_out, ab_cell_out;
-  wire bc_buf_out, bc_bead_out, bc_cell_out;
-
   valve lysis(.fluid_in(lysis_in), .fluid_out(j1), .air_in(lysis_ctl));
   valve wash(.fluid_in(wash_in), .fluid_out(j1), .air_in(wash_ctl));
   valve buffer(.fluid_in(buffer_in), .fluid_out(j1), .air_in(elute_ctl));
 
   mnacidpro inner_a(.in1(j1),
-                       .in2(ab_buf_out),
+                       .in2(buf_out),
                        .in3(buf_in),
                        .in4(cell_in),
-                       .in5(ab_cell_out),
+                       .in5(cell_out),
                        .in6(bead_in),
-                       .in7(ab_bead_out),
+                       .in7(bead_out),
                        .c1(vertical_ctl), .c4(vertical_ctl), .c7(vertical_ctl),
                        .c2(horiz_ctl), .c3(horiz_ctl),
                        .c5(horiz_ctl), .c6(horiz_ctl),
