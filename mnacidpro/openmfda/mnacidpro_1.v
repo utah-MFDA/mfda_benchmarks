@@ -2,14 +2,14 @@ module mnacidpro_1(input lysis_ctl, wash_ctl, elute_ctl, horiz_ctl, dead_end_ctl
                  loop_exit_ctl, bead_vtl_ctl, wash_ctl, collection_ctl,
                  vertical_ctl, bead_trap_ctl,
                  input pump1, pump2, pump3,
-                 input bead_in, buf_in, cell_in,
-                 input lysis_in, wash_in, buffer_in,
-                 output collect_1,
-                 output waste, bead_out, buf_out, cell_out);
+                 inout bead_in, buf_in, cell_in,
+                 inout lysis_in, wash_in, buffer_in,
+                 inout collect_1,
+                 inout waste, bead_out, buf_out, cell_out);
   wire j1;
   valve lysis(.fluid_in(lysis_in), .fluid_out(j1), .air_in(lysis_ctl));
   valve wash(.fluid_in(wash_in), .fluid_out(j1), .air_in(wash_ctl));
-  valve buffer(.fluid_in(buffer_in), .fluid_out(j1), .air_in(elute_ctl));
+  valve buff(.fluid_in(buffer_in), .fluid_out(j1), .air_in(elute_ctl));
 
   mnacidpro inner_a(.in1(j1),
                        .in2(buf_out),

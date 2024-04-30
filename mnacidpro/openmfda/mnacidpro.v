@@ -1,7 +1,7 @@
-module mnacidpro(input in1, in2, in3, in4, in5, in6, in7,
+module mnacidpro(inout in1, in3, in4, in5, in6,
                  input c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,
                  input p1, p2, p3,
-                 output out1, out2);
+                 inout in7, in2, out1, out2);
   wire j1,j2,j3,j4,j5;
   wire jp1, jp2;
   valve v1(.fluid_in(in1), .fluid_out(j1), .air_in(c1));
