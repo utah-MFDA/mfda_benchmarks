@@ -5,7 +5,7 @@ module ChIP4(inout inlet1, inlet2, inlet3, inlet4, inlet5, inlet6, inlet7, inlet
              prep_inlet_ctrl, prep_outlet_ctrl,
              v1_ctrl, v2_ctrl, sv1_ctrl, outlet1_ctrl, outlet2_ctrl,
              bead_in,
-             stage_in_ctrl
+             stage_in_ctrl,
              stage_out_ctrl, sieve_ctrl,
              collect_ctrl,
              stage_inlet_ctrl, stage_outlet_ctrl, bead_ctrl,
@@ -45,4 +45,4 @@ module ChIP4(inout inlet1, inlet2, inlet3, inlet4, inlet5, inlet6, inlet7, inlet
                .inlet_ctrl(stage_inlet_ctrl), .outlet_ctrl(stage_outlet_ctrl), .bead_ctrl(bead_ctrl),
                .pump1(pump1), .pump2(pump2), .pump3(pump3),
                .ring_in(j2), .inlet(inlet4), .bead_in(bead_in), .outlet(outlet6), .collect(collect4));
-endmodule;
+endmodule

@@ -1,8 +1,8 @@
-module chamber(inout ring_in_ctrl
+module chamber(inout ring_in_ctrl,
                ring_out_ctrl, sieve_ctrl,
                collect_ctrl,
                inlet_ctrl, outlet_ctrl, bead_ctrl,
-               pump1, pump2. pump3,
+               pump1, pump2, pump3,
                inout ring_in, inlet, bead_in, outlet, collect);
   wire j1, j2, j3, j4, j5;
   valve vring_in(.fluid_in(ring_in), .fluid_out(j1), .air_in(ring_in_ctrl));
@@ -18,7 +18,7 @@ module chamber(inout ring_in_ctrl
 
 endmodule
 
-module prep_chamber(input inlet, v1_ctrl, v2_ctrl, sv1_ctrl, inlet_ctrl, outlet1_ctrl, outlet2_ctrl, output outlet1, outlet2, ringout);
+module prep_chamber(inout inlet, v1_ctrl, v2_ctrl, sv1_ctrl, inlet_ctrl, outlet1_ctrl, outlet2_ctrl, inout outlet1, outlet2, ringout);
   wire j1, j2, j3;
   valve vin(.fluid_in(inlet), .fluid_out(j1), .air_in(inlet_ctrl));
   valve vout1(.fluid_in(j1), .fluid_out(outlet1), .air_in(outlet1_ctrl));

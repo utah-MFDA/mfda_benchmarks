@@ -7,7 +7,7 @@ module ChIP4(inout inlet1, inlet2, inlet3, inlet4, inlet5, inlet6,
              prep_inlet_ctrl, prep_outlet_ctrl,
              v1_ctrl, v2_ctrl, sv1_ctrl, outlet1_ctrl, outlet2_ctrl,
              bead_in,
-             stage_in_ctrl
+             stage_in_ctrl,
              stage_out_ctrl, sieve_ctrl,
              collect_ctrl,
              stage_inlet_ctrl, stage_outlet_ctrl, bead_ctrl,
