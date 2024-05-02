@@ -1,116 +1,56 @@
 // Device I
-module rotary16 (
-inout pb1_1, pb1_2, pb1_3, pb1_4, pb1_5, pb1_6, pb1_7, pb1_8, pb1_9, pb1_10, pb1_11, pb1_12, pb1_13, pb1_14, pb1_15, pb1_16, pb2_1, pb2_2, pb2_3, pb2_4, pb2_5, pb2_6, pb2_7, pb2_8, pb2_9, pb2_10, pb2_11, pb2_12, pb2_13, pb2_14, pb2_15, pb2_16, cpb1_1, cpb1_2, cpb1_3, cpb1_4, cpb2_1, cpb2_2, cpb2_3, cpb2_4, cpb3_1, cpb3_2, cpb4_1, cpb4_2, cpb4_3, cpb5_1, cpb5_2, cpb5_3, cpb5_4, cpb6_1, cpb6_2, cpb6_3, cpb6_4
-);
-wire c1;
-wire c2;
-wire c3;
-wire c4;
-wire c5;
-wire c6;
-wire c7;
-wire c8;
-wire c9;
-wire c10;
-wire c11;
-wire c12;
-wire c13;
-wire c14;
-wire c15;
-wire c16;
-wire c17;
-wire c18;
-wire c19;
-wire c20;
-wire c21;
-wire c22;
-wire c23;
-wire c24;
-wire c25;
-wire c26;
-wire c27;
-wire c28;
-wire c29;
-wire c30;
-wire c31;
-wire c32;
-wire c33;
-wire c34;
-wire cc1;
-wire cc2;
-wire cc3;
-wire cc4;
-wire cc5;
-wire cc6;
-wire cc7;
-wire cc8;
-wire cc9;
-wire cc10;
-wire cc11;
-wire cc12;
-wire cc13;
-wire cc14;
-wire cc15;
-wire cc16;
-wire cc17;
-wire cc18;
-wire cc19;
-wire cc20;
-wire cc21;
-assign c1 = pb1_1;
-assign c2 = pb1_2;
-assign c3 = pb1_3;
-assign c4 = pb1_4;
-assign c5 = pb1_5;
-assign c6 = pb1_6;
-assign c7 = pb1_7;
-assign c8 = pb1_8;
-assign c9 = pb1_9;
-assign c10 = pb1_10;
-assign c11 = pb1_11;
-assign c12 = pb1_12;
-assign c13 = pb1_13;
-assign c14 = pb1_14;
-assign c15 = pb1_15;
-assign c16 = pb1_16;
-MUX m1(.port17(c17),.port18(cc1),.port20(cc2),.port22(cc3),.port24(cc4),.port19(cc5),.port21(cc6),.port23(cc7),.port25(cc8),.port1(c1),.port2(c2),.port3(c3),.port4(c4),.port5(c5),.port6(c6),.port7(c7),.port8(c8),.port9(c9),.port10(c10),.port11(c11),.port12(c12),.port13(c13),.port14(c14),.port15(c15),.port16(c16));
-ROTARY_MIXER rp(.port2(c18),.port4(cc17),.port5(cc18),.port3(cc19),.port6(cc20),.port7(cc21),.port1(c17));
-assign c19 = pb2_1;
-assign c20 = pb2_2;
-assign c21 = pb2_3;
-assign c22 = pb2_4;
-assign c23 = pb2_5;
-assign c24 = pb2_6;
-assign c25 = pb2_7;
-assign c26 = pb2_8;
-assign c27 = pb2_9;
-assign c28 = pb2_10;
-assign c29 = pb2_11;
-assign c30 = pb2_12;
-assign c31 = pb2_13;
-assign c32 = pb2_14;
-assign c33 = pb2_15;
-assign c34 = pb2_16;
-MUX m2(.port2(c19),.port3(c20),.port4(c21),.port5(c22),.port6(c23),.port7(c24),.port8(c25),.port9(c26),.port10(c27),.port11(c28),.port12(c29),.port13(c30),.port14(c31),.port15(c32),.port16(c33),.port17(c34),.port18(cc9),.port20(cc10),.port22(cc11),.port24(cc12),.port19(cc13),.port21(cc14),.port23(cc15),.port25(cc16),.port1(c18));
-assign cc1 = cpb1_1;
-assign cc2 = cpb1_2;
-assign cc3 = cpb1_3;
-assign cc4 = cpb1_4;
-assign cc5 = cpb2_1;
-assign cc6 = cpb2_2;
-assign cc7 = cpb2_3;
-assign cc8 = cpb2_4;
-assign cc17 = cpb3_1;
-assign cc18 = cpb3_2;
-assign cc19 = cpb4_1;
-assign cc20 = cpb4_2;
-assign cc21 = cpb4_3;
-assign cc13 = cpb5_1;
-assign cc14 = cpb5_2;
-assign cc15 = cpb5_3;
-assign cc16 = cpb5_4;
-assign cc9 = cpb6_1;
-assign cc10 = cpb6_2;
-assign cc11 = cpb6_3;
-assign cc12 = cpb6_4;
+module rotary16(inout i1, i2, i3, i4, i5, i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,
+                 c1, c2, c3, c4, c5, c6, c7, c8,
+                 k1, k2, k3, k4, k5, k6,k7,k8,k9,k10,k11,k12,k13,k14,k15,k16,
+                 d1, d2, d3, d4, d5, d6, d7, d8,
+                 e1, e2, e3, e4, e5);
+  MUX16 m1(i1, i2, i3, i4, i5, i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16, c1, c2, c3, c4, c5, c6, c7, c8, j1);
+  MUX16 m2(k1, k2, k3, k4, k5, k6,k7,k8,k9,k10,k11,k12,k13,k14,k15,k16, d1, d2, d3, d4, d5, d6, d7, d8, j2);
+  ROTARY_MIXER r1(j1, j2, e1, e2, e3, e4, e5);
+endmodule
+
+module MUX16(inout i1, i2, i3, i4, i5, i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16, c1, c2, c3, c4, c5, c6, c7, c8, o1);
+  wire j1, j2, j3, j4, j5,j6, j7,j8;
+  valve v1(.fluid_in(i1), .fluid_out(j1), .air_in(c1));
+  valve v2(.fluid_in(i2), .fluid_out(j1), .air_in(c2));
+  valve v3(.fluid_in(i3), .fluid_out(j2), .air_in(c1));
+  valve v4(.fluid_in(i4), .fluid_out(j2), .air_in(c2));
+  valve v5(.fluid_in(i5), .fluid_out(j3), .air_in(c1));
+  valve v6(.fluid_in(i6), .fluid_out(j3), .air_in(c2));
+  valve v7(.fluid_in(i7), .fluid_out(j4), .air_in(c1));
+  valve v8(.fluid_in(i8), .fluid_out(j4), .air_in(c2));
+  valve v9(.fluid_in(i9), .fluid_out(j5), .air_in(c1));
+  valve v10(.fluid_in(i10), .fluid_out(j5), .air_in(c2));
+  valve v11(.fluid_in(i11), .fluid_out(j6), .air_in(c1));
+  valve v12(.fluid_in(i12), .fluid_out(j6), .air_in(c2));
+  valve v13(.fluid_in(i13), .fluid_out(j7), .air_in(c1));
+  valve v14(.fluid_in(i14), .fluid_out(j7), .air_in(c2));
+  valve v15(.fluid_in(i15), .fluid_out(j8), .air_in(c1));
+  valve v16(.fluid_in(i16), .fluid_out(j8), .air_in(c2));
+
+
+  valve vj1(.fluid_in(j1), .fluid_out(k1), .air_in(c3));
+  valve vj2(.fluid_in(j2), .fluid_out(k1), .air_in(c4));
+  valve vj3(.fluid_in(j3), .fluid_out(k2), .air_in(c3));
+  valve vj4(.fluid_in(j4), .fluid_out(k2), .air_in(c4));
+  valve vj5(.fluid_in(j5), .fluid_out(k3), .air_in(c3));
+  valve vj6(.fluid_in(j6), .fluid_out(k3), .air_in(c4));
+  valve vj7(.fluid_in(j7), .fluid_out(k4), .air_in(c3));
+  valve vj8(.fluid_in(j8), .fluid_out(k4), .air_in(c4));
+
+  valve vk1(.fluid_in(k1), .fluid_out(l1), .air_in(c5));
+  valve vk2(.fluid_in(k2), .fluid_out(l1), .air_in(c6));
+  valve vk3(.fluid_in(k3), .fluid_out(l2), .air_in(c5));
+  valve vk4(.fluid_in(k4), .fluid_out(l2), .air_in(c6));
+
+  valve vk1(.fluid_in(l1), .fluid_out(o1), .air_in(c7));
+  valve vk2(.fluid_in(l2), .fluid_out(o1), .air_in(c8));
+endmodule
+
+module ROTARY_MIXER(inout inlet, outlet, ctrl3, ctrl4, ctrl5, ctrl6, ctrl7);
+  valve v1(.fluid_in(inlet), .fluid_out(j1), .air_in(ctrl3));
+  valve v2(.fluid_in(j1), .fluid_out(j3), .air_in(ctrl4));
+  valve v3(.fluid_in(j1), .fluid_out(j2), .air_in(ctrl5));
+  valve v4(.fluid_in(j2), .fluid_out(j3), .air_in(ctrl6));
+  valve v5(.fluid_in(j3), .fluid_out(outlet), .air_in(ctrl7));
 endmodule
