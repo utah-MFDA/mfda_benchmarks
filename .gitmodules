@@ -1,0 +1,12 @@
+[submodule "sources/Microfluidics-Benchmarks"]
+	path = sources/Microfluidics-Benchmarks
+	url = https://github.com/CIDARLAB/Microfluidics-Benchmarks.git
+[submodule "sources/Parchmint"]
+	path = sources/Parchmint
+	url = https://github.com/CIDARLAB/Parchmint.git
+[submodule "sources/MINT-Benchmarks"]
+	path = sources/MINT-Benchmarks
+	url = https://github.com/CIDARLAB/MINT-Benchmarks.git
+[submodule "sources/MINT-TestCases"]
+	path = sources/MINT-TestCases
+	url = https://github.com/CIDARLAB/MINT-TestCases.git
