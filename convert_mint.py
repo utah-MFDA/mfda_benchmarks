@@ -17,6 +17,8 @@ for connection in dev.connections:
 for component in dev.components:
     connections = dev.get_connections_for_component(component)
     if component.entity == "PORT":
+        for conn in connections:
+            print(f"assign {conn.name} = {component.name};")
         continue
 
     ports = [f".port{c.source.port or 0}({c.name})" for c in connections if c.source.component == component.ID]
