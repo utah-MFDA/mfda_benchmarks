@@ -1,73 +1,62 @@
-module Planar_Synthetic_3(
-input Source1,
-input Source2,
-output Out1
+module Synthetic_3(
+input Source,
+output Out
 );
-wire flow_switch3_0_Out1;
-wire flow_switch3_0_flow_switch4_9;
-wire flow_switch3_0_flow_switch4_10;
-wire flow_switch4_9_flow_switch4_7;
-wire flow_switch4_9_Filter1;
-wire flow_switch4_9_Filter2;
-wire flow_switch4_10_flow_switch4_8;
-wire flow_switch4_10_Filter3;
-wire flow_switch4_10_Filter4;
-wire flow_switch4_7_flow_switch4_5;
-wire flow_switch4_7_Heater1;
-wire flow_switch4_7_Heater2;
-wire flow_switch4_8_flow_switch4_6;
-wire flow_switch4_8_Heater3;
-wire flow_switch4_8_Heater4;
-wire flow_switch4_5_flow_switch4_3;
-wire flow_switch4_5_Mixer9;
-wire flow_switch4_5_Mixer10;
-wire flow_switch4_6_flow_switch4_4;
-wire flow_switch4_6_Mixer11;
-wire flow_switch4_6_Mixer12;
-wire flow_switch4_3_flow_switch4_1;
-wire flow_switch4_3_Mixer5;
-wire flow_switch4_3_Mixer6;
-wire flow_switch4_4_flow_switch4_2;
-wire flow_switch4_4_Mixer7;
-wire flow_switch4_4_Mixer8;
-wire flow_switch4_1_Source1;
-wire flow_switch4_1_Mixer1;
-wire flow_switch4_1_Mixer2;
-wire flow_switch4_2_Source2;
-wire flow_switch4_2_Mixer3;
-wire flow_switch4_2_Mixer4;
-assign flow_switch4_1_Source1 = Source1;
-assign flow_switch4_2_Source2 = Source2;
-assign Out1 = flow_switch3_0_Out1;
-Mixer Mixer1(.port0(flow_switch4_1_Mixer1));
-Mixer Mixer2(.port0(flow_switch4_1_Mixer2));
-Mixer Mixer3(.port0(flow_switch4_2_Mixer3));
-Mixer Mixer4(.port1(flow_switch4_2_Mixer4));
-Mixer Mixer5(.port0(flow_switch4_3_Mixer5));
-Mixer Mixer6(.port1(flow_switch4_3_Mixer6));
-Mixer Mixer7(.port1(flow_switch4_4_Mixer7));
-Mixer Mixer8(.port1(flow_switch4_4_Mixer8));
-Mixer Mixer9(.port0(flow_switch4_5_Mixer9));
-Mixer Mixer10(.port1(flow_switch4_5_Mixer10));
-Mixer Mixer11(.port1(flow_switch4_6_Mixer11));
-Mixer Mixer12(.port1(flow_switch4_6_Mixer12));
-Heater Heater1(.port1(flow_switch4_7_Heater1));
-Heater Heater2(.port0(flow_switch4_7_Heater2));
-Heater Heater3(.port0(flow_switch4_8_Heater3));
-Heater Heater4(.port0(flow_switch4_8_Heater4));
-Filter Filter1(.port0(flow_switch4_9_Filter1));
-Filter Filter2(.port0(flow_switch4_9_Filter2));
-Filter Filter3(.port0(flow_switch4_10_Filter3));
-Filter Filter4(.port0(flow_switch4_10_Filter4));
-Switch flow_switch3_0(.port1(flow_switch3_0_flow_switch4_10),.port2(flow_switch3_0_flow_switch4_9),.port3(flow_switch3_0_Out1));
-Switch flow_switch4_1(.port0(flow_switch4_1_Mixer2),.port1(flow_switch4_3_flow_switch4_1),.port2(flow_switch4_1_Mixer1),.port3(flow_switch4_1_Source1));
-Switch flow_switch4_2(.port0(flow_switch4_4_flow_switch4_2),.port1(flow_switch4_2_Source2),.port2(flow_switch4_2_Mixer3),.port3(flow_switch4_2_Mixer4));
-Switch flow_switch4_3(.port0(flow_switch4_5_flow_switch4_3),.port1(flow_switch4_3_flow_switch4_1),.port2(flow_switch4_3_Mixer5),.port3(flow_switch4_3_Mixer6));
-Switch flow_switch4_4(.port0(flow_switch4_4_Mixer8),.port1(flow_switch4_6_flow_switch4_4),.port2(flow_switch4_4_flow_switch4_2),.port3(flow_switch4_4_Mixer7));
-Switch flow_switch4_5(.port0(flow_switch4_7_flow_switch4_5),.port1(flow_switch4_5_flow_switch4_3),.port2(flow_switch4_5_Mixer9),.port3(flow_switch4_5_Mixer10));
-Switch flow_switch4_6(.port0(flow_switch4_6_Mixer12),.port1(flow_switch4_6_flow_switch4_4),.port2(flow_switch4_8_flow_switch4_6),.port3(flow_switch4_6_Mixer11));
-Switch flow_switch4_7(.port0(flow_switch4_9_flow_switch4_7),.port1(flow_switch4_7_flow_switch4_5),.port2(flow_switch4_7_Heater1),.port3(flow_switch4_7_Heater2));
-Switch flow_switch4_8(.port0(flow_switch4_8_Heater4),.port1(flow_switch4_8_flow_switch4_6),.port2(flow_switch4_10_flow_switch4_8),.port3(flow_switch4_8_Heater3));
-Switch flow_switch4_9(.port0(flow_switch3_0_flow_switch4_9),.port1(flow_switch4_9_flow_switch4_7),.port2(flow_switch4_9_Filter1),.port3(flow_switch4_9_Filter2));
-Switch flow_switch4_10(.port0(flow_switch4_10_Filter4),.port1(flow_switch4_10_flow_switch4_8),.port2(flow_switch3_0_flow_switch4_10),.port3(flow_switch4_10_Filter3));
+
+wire w1,w2,w3,w4,w5,w6,w7,w8,w9,w10,w11,w12,w13,w14,w15,w16,w17,w18,w19,w20,w21,w22,w23,w24,w25,w26;
+
+//first row 
+chamber o1(.in(Source), .out(w1));
+chamber o2(.in(Source), .out(w2));
+chamber o3(.in(Source), .out(w3));
+chamber o4(.in(Source), .out(w3));
+chamber o5(.in(Source), .out(w4));
+chamber o6(.in(Source), .out(w5));
+chamber o7(.in(Source), .out(w5));
+chamber o8(.in(Source), .out(w6));
+chamber o9(.in(Source), .out(w6));
+chamber o10(.in(Source), .out(w7));
+chamber o11(.in(Source), .out(w8));
+
+//Second row
+
+mixer m12(.a(w1), .b(Source), .out(w9));
+chamber o13(.in(w2), .out(w20));
+mixer m14(.a(w3), .b(w3), .out(w10));
+chamber o15(.in(w4), .out(w11));
+mixer m16(.a(w5), .b(w5), .out(w21));
+mixer m17(.a(w6), .b(w6), .out(w12));
+chamber o18(.in(w7), .out(w13));
+chamber o19(.in(w8), .out(w22));
+
+//Third row
+
+mixer m20(.a(w9), .b(w20), .out(w14));
+chamber o21(.in(w10), .out(w23));
+chamber o22(.in(w11), .out(w15));
+mixer m23(.a(w12), .b(w21), .out(w24));
+mixer m24(.a(w13), .b(w22), .out(w16));
+
+//Fourth row
+
+mixer m25(.a(w14), .b(w23), .out(w17));
+mixer m26(.a(w15), .b(w24), .out(w25));
+chamber o27(.in(w16), .out(w18));
+
+//Fifth row
+mixer m28(.a(w17), .b(w25), .out(w26));
+
+//Sixth row 
+mixer m29(.a(w18), .b(w26), .out(w19));
+
+//Seventh row
+chamber o30(.in(w19), .out(Out));
+
 endmodule
+
+
+
+
+
+
+
