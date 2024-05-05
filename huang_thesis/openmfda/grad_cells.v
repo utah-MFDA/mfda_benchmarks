@@ -46,3 +46,7 @@ module GRADIENT_GENERATOR(inout a, b, y);
   serpentine s3_3(.in(j2), .out(j3));
   chamber c(.in(j3),.out(y));
 endmodule
+
+module LONG_CELL_TRAP(inout in, out);
+  serpentine c(.in(in), .out(out));
+endmodule

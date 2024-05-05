@@ -34,14 +34,14 @@ NODE n1(.port0(c4),.port1(c1),.port2(c2),.port3(c3));
 NODE n2(.port0(c22),.port1(c23),.port2(c21));
 TREE t1(.port2(c5),.port3(c6),.port4(c7),.port5(c8),.port6(c9),.port7(c10),.port8(c11),.port9(c12),.port1(c4));
 TREE t2(.port9(c13),.port8(c14),.port7(c15),.port6(c16),.port5(c17),.port4(c18),.port3(c19),.port2(c20),.port1(c21));
-LONG_CELL_TRAP b1_1(.port0(c5),.port0(c13));
-LONG_CELL_TRAP b1_2(.port0(c6),.port0(c14));
-LONG_CELL_TRAP b1_3(.port0(c7),.port0(c15));
-LONG_CELL_TRAP b1_4(.port0(c8),.port0(c16));
-LONG_CELL_TRAP b1_5(.port0(c9),.port0(c17));
-LONG_CELL_TRAP b1_6(.port0(c10),.port0(c18));
-LONG_CELL_TRAP b1_7(.port0(c11),.port0(c19));
-LONG_CELL_TRAP b1_8(.port0(c12),.port0(c20));
+LONG_CELL_TRAP b1_1(.port0(c5),.port1(c13));
+LONG_CELL_TRAP b1_2(.port0(c6),.port1(c14));
+LONG_CELL_TRAP b1_3(.port0(c7),.port1(c15));
+LONG_CELL_TRAP b1_4(.port0(c8),.port1(c16));
+LONG_CELL_TRAP b1_5(.port0(c9),.port1(c17));
+LONG_CELL_TRAP b1_6(.port0(c10),.port1(c18));
+LONG_CELL_TRAP b1_7(.port0(c11),.port1(c19));
+LONG_CELL_TRAP b1_8(.port0(c12),.port1(c20));
 endmodule
 
 
@@ -61,4 +61,8 @@ module TREE(inout port1, port2, port3, port4, port5, port6, port7, port8, port9)
   mixer m5(.a(port4), .b(port3), .y(j2_2));
   mixer m6(.a(port6), .b(port5), .y(j2_3));
   mixer m7(.a(port8), .b(port7), .y(j2_4));
+endmodule
+
+module LONG_CELL_TRAP(inout port0, port1);
+  serpentine c(port0, port1);
 endmodule

@@ -6,3 +6,7 @@ LONG_CELL_TRAP ct1(.port2(p3),.port1(c3));
 valve v1(.air_in(cp1),.fluid_out(c3),.fluid_in(p1));
 valve v2(.air_in(cp2),.fluid_out(c3),.fluid_in(p2));
 endmodule
+
+module LONG_CELL_TRAP(inout port2, port1);
+  serpentine c(port2, port1);
+endmodule

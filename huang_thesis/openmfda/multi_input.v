@@ -58,3 +58,7 @@ endmodule
 module MIXER(inout port1, port2);
   serpentine s1(.in(port1), .out(port2));
 endmodule
+
+module SQUARE_CELL_TRAP(port1, port2, port3, port4);
+  trap4 t(port1, port2, port3, port4);
+endmodule

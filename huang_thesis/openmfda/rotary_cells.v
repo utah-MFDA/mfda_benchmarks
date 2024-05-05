@@ -36,10 +36,10 @@ assign c2 = pb1_2;
 assign c3 = pb1_3;
 assign c4 = pb1_4;
 ROTARY_MIXER rp(.outlet(c6),.port3(cc3),.port6(cc4),.port7(cc5),.port4(cc10),.port5(cc11),.inlet(c5));
-LONG_CELL_TRAP b1_1(.port0(c11),.port0(c7));
-LONG_CELL_TRAP b1_2(.port0(c12),.port0(c8));
-LONG_CELL_TRAP b1_3(.port0(c13),.port0(c9));
-LONG_CELL_TRAP b1_4(.port0(c14),.port0(c10));
+LONG_CELL_TRAP b1_1(.port0(c11),.port1(c7));
+LONG_CELL_TRAP b1_2(.port0(c12),.port1(c8));
+LONG_CELL_TRAP b1_3(.port0(c13),.port1(c9));
+LONG_CELL_TRAP b1_4(.port0(c14),.port1(c10));
 TREE t1(.out(c15),.in1(c11),.in2(c12),.in3(c13),.in4(c14));
 assign c15 = p1;
 assign cc1 = cb1_1;
@@ -80,4 +80,8 @@ module TREE(inout in1, in2, in3, in4, out);
   mixer m1(.a(in1), .b(in2), .y(j1));
   mixer m2(.a(in3), .b(in4), .y(j2));
   mixer m3(.a(j1), .b(j2), .y(out));
+endmodule
+
+module LONG_CELL_TRAP(inout port0, port1);
+  serpentine c(port0, port1);
 endmodule

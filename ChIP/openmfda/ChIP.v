@@ -1,4 +1,4 @@
-module chamber(inout ring_in_ctrl,
+module reaction_chamber(inout ring_in_ctrl,
                ring_out_ctrl, sieve_ctrl,
                collect_ctrl,
                inlet_ctrl, outlet_ctrl, bead_ctrl,

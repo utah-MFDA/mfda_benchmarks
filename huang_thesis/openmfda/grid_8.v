@@ -73,3 +73,7 @@ module TREE8(inout out, in1, in2, in3, in4, in5, in6, in7, in8);
   mixer m6(.a(port6), .b(port5), .y(j2_3));
   mixer m7(.a(port8), .b(port7), .y(j2_4));
 endmodule
+
+module CELL_TRAP(inout a, b, c, d);
+  trap4 t(a,b,c,d);
+endmodule

@@ -50,3 +50,7 @@ module MUX8(inout i1, i2, i3, i4, i5, i6,i7,i8, c1, c2, c3, c4, c5, c6, o1);
   valve v13(.fluid_in(j5), .fluid_out(o), .air_in(c5));
   valve v14(.fluid_in(j6), .fluid_out(o), .air_in(c6));
 endmodule
+
+module CELL_TRAP(inout a,b,c,d);
+  trap4 t(a,b,c,d);
+endmodule
