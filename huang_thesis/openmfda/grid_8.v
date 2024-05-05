@@ -5,7 +5,7 @@ module grid_8(inout i1, i2, i3, i4, i5, i6,i7,i8, c1, c2, c3, c4, c5, c6,
               o1);
   wire j1;
   MUX8 mux(i1, i2, i3, i4, i5, i6,i7,i8, c1, c2, c3, c4, c5, c6, j1);
-  TREE8 tr1(j1, k1, k2, k3, k4, k5, k6,k7,k8);
+  TREE8 tr2(j1, k1, k2, k3, k4, k5, k6,k7,k8);
   GRID g1(k1,k2,k3,k4,k5,k6,k7,k8,l1,l2,l3,l4,l5,l6,l7,l8,d1,e1);
   GRID g2(l1,l2,l3,l4,l5,l6,l7,l8,m1,m2,m3,m4,m5,m6,m7,m8,d2,e2);
   GRID g3(m1,m2,m3,m4,m5,m6,m7,m8,n1,n2,n3,n4,n5,n6,n7,n8,d3,e3);
@@ -18,29 +18,29 @@ module grid_8(inout i1, i2, i3, i4, i5, i6,i7,i8, c1, c2, c3, c4, c5, c6,
 endmodule
 
 module GRID(inout i1, i2, i3, i4, i5, i6,i7,i8,  m1, m2, m3, m4, m5, m6,m7,m8, c, d);
-  CELL_TRAP ct1(i1, j1, l1);
+  CELL_TRAP ct0(i1, j1, l1);
   valve vj1(.fluidin(j1), .fluid_out(k2), .air_in(c));
   valve vl1(.fluidin(l1), .fluid_out(m1), .air_in(d));
   CELL_TRAP ct1(i2, j2, k2, l2);
-  valve vj1(.fluidin(j2), .fluid_out(k3), .air_in(c));
-  valve vl1(.fluidin(l2), .fluid_out(m2), .air_in(d));
-  CELL_TRAP ct1(i3, j3, k3, l3);
-  valve vj1(.fluidin(j3), .fluid_out(k4), .air_in(c));
-  valve vl1(.fluidin(l3), .fluid_out(m3), .air_in(d));
-  CELL_TRAP ct1(i4, j4, k4, l4);
-  valve vj1(.fluidin(j4), .fluid_out(k5), .air_in(c));
-  valve vl1(.fluidin(l4), .fluid_out(m4), .air_in(d));
-  CELL_TRAP ct1(i5, j5, k5, l5);
-  valve vj1(.fluidin(j5), .fluid_out(k6), .air_in(c));
-  valve vl1(.fluidin(l5), .fluid_out(m5), .air_in(d));
-  CELL_TRAP ct1(i6, j6, k6, l6);
-  valve vj1(.fluidin(j6), .fluid_out(k7), .air_in(c));
-  valve vl1(.fluidin(l6), .fluid_out(m6), .air_in(d));
-  CELL_TRAP ct1(i7, j7, k7, l7);
-  valve vj1(.fluidin(j7), .fluid_out(k8), .air_in(c));
-  valve vl1(.fluidin(l7), .fluid_out(m7), .air_in(d));
-  CELL_TRAP ct1(i8, j8, k8, l8);
-  valve vl1(.fluidin(l8), .fluid_out(m8), .air_in(d));
+  valve vj2(.fluidin(j2), .fluid_out(k3), .air_in(c));
+  valve vl2(.fluidin(l2), .fluid_out(m2), .air_in(d));
+  CELL_TRAP ct2(i3, j3, k3, l3);
+  valve vj3(.fluidin(j3), .fluid_out(k4), .air_in(c));
+  valve vl3(.fluidin(l3), .fluid_out(m3), .air_in(d));
+  CELL_TRAP ct3(i4, j4, k4, l4);
+  valve vj4(.fluidin(j4), .fluid_out(k5), .air_in(c));
+  valve vl4(.fluidin(l4), .fluid_out(m4), .air_in(d));
+  CELL_TRAP ct4(i5, j5, k5, l5);
+  valve vj5(.fluidin(j5), .fluid_out(k6), .air_in(c));
+  valve vl5(.fluidin(l5), .fluid_out(m5), .air_in(d));
+  CELL_TRAP ct5(i6, j6, k6, l6);
+  valve vj6(.fluidin(j6), .fluid_out(k7), .air_in(c));
+  valve vl6(.fluidin(l6), .fluid_out(m6), .air_in(d));
+  CELL_TRAP ct6(i7, j7, k7, l7);
+  valve vj7(.fluidin(j7), .fluid_out(k8), .air_in(c));
+  valve vl7(.fluidin(l7), .fluid_out(m7), .air_in(d));
+  CELL_TRAP ct7(i8, j8, k8, l8);
+  valve vl8(.fluidin(l8), .fluid_out(m8), .air_in(d));
 endmodule
 
 module MUX8(inout i1, i2, i3, i4, i5, i6,i7,i8, c1, c2, c3, c4, c5, c6, o1);

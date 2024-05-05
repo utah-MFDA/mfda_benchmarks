@@ -1,11 +1,11 @@
-module Synthetic_3(
+module synthetic_3(
 input Source,
 output Out
 );
 
 wire w1,w2,w3,w4,w5,w6,w7,w8,w9,w10,w11,w12,w13,w14,w15,w16,w17,w18,w19,w20,w21,w22,w23,w24,w25,w26;
 
-//first row 
+//first row
 chamber o1(.in(Source), .out(w1));
 chamber o2(.in(Source), .out(w2));
 chamber o3(.in(Source), .out(w3));
@@ -46,17 +46,10 @@ chamber o27(.in(w16), .out(w18));
 //Fifth row
 mixer m28(.a(w17), .b(w25), .out(w26));
 
-//Sixth row 
+//Sixth row
 mixer m29(.a(w18), .b(w26), .out(w19));
 
 //Seventh row
 chamber o30(.in(w19), .out(Out));
 
 endmodule
-
-
-
-
-
-
-

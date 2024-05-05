@@ -1,4 +1,4 @@
-module Synthetic_4(
+module synthetic_4(
 input Source,
 output Out
 );
@@ -54,7 +54,7 @@ mixer m35(.a(w22), .b(w36), .out(w38));
 mixer m36(.a(w23), .b(w37), .out(w25));
 mixer m37(.a(w24), .b(w38), .out(w26));
 
-//Sixth row 
+//Sixth row
 chamber o38(.in(w25), .out(w27));
 chamber o39(.in(w26), .out(w39));
 
@@ -62,11 +62,3 @@ chamber o39(.in(w26), .out(w39));
 mixer m40(.a(w27), .b(w39), .out(Out));
 
 endmodule
-
-
-
-
-
-
-
-

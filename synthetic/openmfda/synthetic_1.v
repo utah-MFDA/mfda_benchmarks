@@ -1,4 +1,4 @@
-module Synthetic_1(
+module synthetic_1(
 input Source,
 output Out
 );
@@ -20,4 +20,3 @@ mixer m9(.a(w9), .b(w3), .out(w7));
 chamber Detect_o10(.in(w7), .out(Out));
 
 endmodule
-

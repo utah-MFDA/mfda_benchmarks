@@ -1,4 +1,4 @@
-module Synthetic_5(
+module synthetic_5(
 input Source,
 output Out
 );
@@ -65,14 +65,14 @@ chamber o43(.in(w26), .out(w47));
 chamber o44(.in(w27), .out(w30));
 mixer m45(.a(w29), .b(w29), .out(w31));
 
-//Sixth row 
+//Sixth row
 mixer m46(.a(w30), .b(w47), .out(w32));
 mixer m47(.a(w28), .b(w31), .out(w33));
 
 //Seventh row
 chamber o48(.in(w33), .out(w48));
 
-//Eighth row 
+//Eighth row
 mixer m49(.a(w48), .b(w32), .out(w34));
 
 //Ninth row
@@ -80,11 +80,3 @@ chamber o50(.in(w34), .out(Out));
 
 
 endmodule
-
-
-
-
-
-
-
-

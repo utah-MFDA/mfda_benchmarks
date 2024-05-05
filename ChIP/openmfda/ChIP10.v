@@ -1,4 +1,4 @@
-module ChIP4(inout inlet1, inlet2, inlet3, inlet4, inlet5, inlet6,
+module ChIP10(inout inlet1, inlet2, inlet3, inlet4, inlet5, inlet6,
              inlet7, inlet8, inlet9, inlet10, inlet11, inlet12, inlet13, inlet14, inlet15,
              outlet1, outlet2,
              outlet3, outlet4, outlet5, outlet6, outlet7, outlet8, outlet9, outlet10, outlet11, outlet12,
@@ -83,4 +83,4 @@ module ChIP4(inout inlet1, inlet2, inlet3, inlet4, inlet5, inlet6,
                .inlet_ctrl(stage_inlet_ctrl), .outlet_ctrl(stage_outlet_ctrl), .bead_ctrl(bead_ctrl),
                .pump1(pump1), .pump2(pump2), .pump3(pump3),
                .ring_in(j2), .inlet(inlet10), .bead_in(bead_in), .outlet(outlet12), .collect(collect10));
-endmodule;
+endmodule
