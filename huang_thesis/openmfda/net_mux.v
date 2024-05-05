@@ -1,5 +1,5 @@
 // Device J
-module net_mux(i1, i2, i3, i4, i5, i6, i7, i8, k1, k2, o1, c1,c2,c3,c4,c5,c6);
+module net_mux(inout i1, i2, i3, i4, i5, i6, i7, i8, k1, k2, o1, c1,c2,c3,c4,c5,c6);
   valve vi1(.fluid_in(i1), .fluid_out(l1), .air_in(c1));
   valve vi2(.fluid_in(i2), .fluid_out(l2), .air_in(c1));
   valve vi3(.fluid_in(i3), .fluid_out(l3), .air_in(c1));
@@ -8,15 +8,6 @@ module net_mux(i1, i2, i3, i4, i5, i6, i7, i8, k1, k2, o1, c1,c2,c3,c4,c5,c6);
   valve vi6(.fluid_in(i6), .fluid_out(l6), .air_in(c1));
   valve vi7(.fluid_in(i7), .fluid_out(l7), .air_in(c1));
   valve vi8(.fluid_in(i8), .fluid_out(l8), .air_in(c1));
-
-  valve vl1(.fluid_in(l1), .fluid_out(l0), .air_in(c2));
-  valve vl2(.fluid_in(l2), .fluid_out(l1), .air_in(c2));
-  valve vl3(.fluid_in(l3), .fluid_out(l2), .air_in(c2));
-  valve vl4(.fluid_in(l4), .fluid_out(l3), .air_in(c2));
-  valve vl5(.fluid_in(l5), .fluid_out(l4), .air_in(c2));
-  valve vl6(.fluid_in(l6), .fluid_out(l5), .air_in(c2));
-  valve vl7(.fluid_in(l7), .fluid_out(l6), .air_in(c2));
-  valve vl8(.fluid_in(l8), .fluid_out(l7), .air_in(c2));
 
   valve vl1(.fluid_in(l1), .fluid_out(l0), .air_in(c2));
   valve vl2(.fluid_in(l2), .fluid_out(l1), .air_in(c2));
@@ -57,7 +48,7 @@ module net_mux(i1, i2, i3, i4, i5, i6, i7, i8, k1, k2, o1, c1,c2,c3,c4,c5,c6);
   CELL_TRAP ct7(l7,m7);
   CELL_TRAP ct8(l8,m8);
 
-  TREE t(o1, j1, j2, j3, j4, j5, j6, j7, j8);
+  TREE8 t(o1, j1, j2, j3, j4, j5, j6, j7, j8);
 endmodule
 
 module TREE8(inout out, in1, in2, in3, in4, in5, in6, in7, in8);

@@ -45,7 +45,7 @@ LONG_CELL_TRAP b1_8(.port0(c12),.port1(c20));
 endmodule
 
 
-module NODE(inout port0, port1, port2, port3)
+module NODE(inout port0, port1, port2, port3);
   assign port0 = port3;
   assign port1 = port3;
   assign port2 = port3;

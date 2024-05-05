@@ -4,6 +4,7 @@ module rotary16(inout i1, i2, i3, i4, i5, i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i1
                  k1, k2, k3, k4, k5, k6,k7,k8,k9,k10,k11,k12,k13,k14,k15,k16,
                  d1, d2, d3, d4, d5, d6, d7, d8,
                  e1, e2, e3, e4, e5);
+  wire j1, j2;
   MUX16 m1(i1, i2, i3, i4, i5, i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16, c1, c2, c3, c4, c5, c6, c7, c8, j1);
   MUX16 m2(k1, k2, k3, k4, k5, k6,k7,k8,k9,k10,k11,k12,k13,k14,k15,k16, d1, d2, d3, d4, d5, d6, d7, d8, j2);
   ROTARY_MIXER r1(j1, j2, e1, e2, e3, e4, e5);
@@ -11,6 +12,8 @@ endmodule
 
 module MUX16(inout i1, i2, i3, i4, i5, i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16, c1, c2, c3, c4, c5, c6, c7, c8, o1);
   wire j1, j2, j3, j4, j5,j6, j7,j8;
+  wire k1, k2, k3, k4;
+  wire l1, l2;
   valve v1(.fluid_in(i1), .fluid_out(j1), .air_in(c1));
   valve v2(.fluid_in(i2), .fluid_out(j1), .air_in(c2));
   valve v3(.fluid_in(i3), .fluid_out(j2), .air_in(c1));
@@ -28,7 +31,6 @@ module MUX16(inout i1, i2, i3, i4, i5, i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16, 
   valve v15(.fluid_in(i15), .fluid_out(j8), .air_in(c1));
   valve v16(.fluid_in(i16), .fluid_out(j8), .air_in(c2));
 
-
   valve vj1(.fluid_in(j1), .fluid_out(k1), .air_in(c3));
   valve vj2(.fluid_in(j2), .fluid_out(k1), .air_in(c4));
   valve vj3(.fluid_in(j3), .fluid_out(k2), .air_in(c3));
@@ -43,8 +45,8 @@ module MUX16(inout i1, i2, i3, i4, i5, i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16, 
   valve vk3(.fluid_in(k3), .fluid_out(l2), .air_in(c5));
   valve vk4(.fluid_in(k4), .fluid_out(l2), .air_in(c6));
 
-  valve vk1(.fluid_in(l1), .fluid_out(o1), .air_in(c7));
-  valve vk2(.fluid_in(l2), .fluid_out(o1), .air_in(c8));
+  valve vl1(.fluid_in(l1), .fluid_out(o1), .air_in(c7));
+  valve vl2(.fluid_in(l2), .fluid_out(o1), .air_in(c8));
 endmodule
 
 module ROTARY_MIXER(inout inlet, outlet, ctrl3, ctrl4, ctrl5, ctrl6, ctrl7);

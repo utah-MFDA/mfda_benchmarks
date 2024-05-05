@@ -27,21 +27,21 @@ chamber o17(.in(Source), .out(w40));
 
 //Second row
 heater o18(.in(w1), .out(w12));
-mixer m19(.a(w2), .b(w35), .y(w41));
+mixer o19(.a(w2), .b(w35), .y(w41));
 heater o20(.in(w3), .out(w13));
-mixer m21(.a(w4), .b(w36), .y(w42));
+mixer o21(.a(w4), .b(w36), .y(w42));
 heater o22(.in(w5), .out(w14));
-mixer m23(.a(w6), .b(w37), .y(w15));
-mixer m24(.a(w7), .b(w38), .y(w16));
-mixer m25(.a(w8), .b(w39), .y(w17);
+mixer o23(.a(w6), .b(w37), .y(w15));
+mixer o24(.a(w7), .b(w38), .y(w16));
+mixer o25(.a(w8), .b(w39), .y(w17));
 heater o26(.in(w9), .out(w18));
 filter o27(.in(w10), .out(w19));
-mixer m28(.a(w11), .b(w40), .y(w20));
+mixer o28(.a(w11), .b(w40), .y(w20));
 
 
 //Third row
-mixer m29(.a(w12), .b(w41), .y(w21));
-mixer m30(.a(w13), .b(w42), .y(w43));
+mixer o29(.a(w12), .b(w41), .y(w21));
+mixer o30(.a(w13), .b(w42), .y(w43));
 filter o31(.in(w14), .out(w22));
 heater o32(.in(w15), .out(w44));
 filter o33(.in(w16), .out(w23));
@@ -51,28 +51,28 @@ detector o36(.in(w19), .out(w25));
 detector o37(.in(w20), .out(w46));
 
 //Fourth row
-mixer m38(.a(w21), .b(w43), .y(w26));
-mixer m39(.a(w22), .b(w44), .y(w27));
-mixer m40(.a(w23), .b(w45), .y(w28));
+mixer o38(.a(w21), .b(w43), .y(w26));
+mixer o39(.a(w22), .b(w44), .y(w27));
+mixer o40(.a(w23), .b(w45), .y(w28));
 heat o41(.in(w24), .out(w29));
-mixer m42(.a(w25), .b(w46), .y(w29));
+mixer o42(.a(w25), .b(w46), .y(w29));
 
 
 
 //Fifth row
 heater o43(.in(w26), .out(w47));
 filter o44(.in(w27), .out(w30));
-mixer m45(.a(w29), .b(w29), .y(w31));
+mixer o45(.a(w29), .b(w29), .y(w31));
 
 //Sixth row
-mixer m46(.a(w30), .b(w47), .y(w32));
-mixer m47(.a(w28), .b(w31), .y(w33));
+mixer o46(.a(w30), .b(w47), .y(w32));
+mixer o47(.a(w28), .b(w31), .y(w33));
 
 //Seventh row
 heater o48(.in(w33), .out(w48));
 
 //Eighth row
-mixer m49(.a(w48), .b(w32), .y(w34));
+mixer o49(.a(w48), .b(w32), .y(w34));
 
 //Ninth row
 detector o50(.in(w34), .out(Out));

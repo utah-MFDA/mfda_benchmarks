@@ -3,7 +3,7 @@
 // There are 45 nodes here, including inputs/outputs, which appears to be their convention.
 // Exact structure was not specified in the papers, so best effort
 // was made to replicate something sensible.
-module in_vitro_diagnostics45 (input i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14, i15, i16, i17, i18 output fl1, fl2, fl3, fl4, fl5, fl6);
+module in_vitro_diagnostics45 (input i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14, i15, i16, i17, i18, output fl1, fl2, fl3, fl4, fl5, fl6);
 
   wire dt1, dt2, dt3, dt4, dt5, dt6, dt7, dt8, dt9;
   mixer mix1(.a(i1), .b(i2), .y(dt1));

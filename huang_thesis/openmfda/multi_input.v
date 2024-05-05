@@ -8,12 +8,12 @@ wire c3;
 wire c4;
 wire c5;
 wire c6;
-wire c7_out
+  wire c7_out;
 wire c7;
 wire c8;
 wire c9;
 wire c10;
-wire c11_out
+  wire c11_out;
 wire c11;
 wire c12;
 wire cc1;
@@ -43,12 +43,12 @@ VALVE v2(.port0(cc4),.out(c11_out),.in(c11));
 endmodule
 
 module VALVE(inout port0, in, out);
-  valve v1(..fluid_in(in), .fluid_out(out), .air_in(port0));
+  valve v1(.fluid_in(in), .fluid_out(out), .air_in(port0));
 endmodule
 
 module MUX(inout port1, port2, port3, port4, port5);
   valve v1 (.fluid_in(port2), .fluid_out(port1), .air_in(port4));
-  valve v1 (.fluid_in(port3), .fluid_out(port1), .air_in(port5));
+  valve v2 (.fluid_in(port3), .fluid_out(port1), .air_in(port5));
 endmodule
 
 module TREE(inout port1, port2, port3);
@@ -59,6 +59,6 @@ module MIXER(inout port1, port2);
   serpentine s1(.in(port1), .out(port2));
 endmodule
 
-module SQUARE_CELL_TRAP(port1, port2, port3, port4);
+module SQUARE_CELL_TRAP(inout port1, port2, port3, port4);
   trap4 t(port1, port2, port3, port4);
 endmodule
