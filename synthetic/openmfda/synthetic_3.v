@@ -1,26 +1,26 @@
 module synthetic_3(
-input Source,
-output Out
+input incoming,
+output outgoing
 );
 
 wire w1,w2,w3,w4,w5,w6,w7,w8,w9,w10,w11,w12,w13,w14,w15,w16,w17,w18,w19,w20,w21,w22,w23,w24,w25,w26;
 
 //first row
-chamber o1(.in(Source), .out(w1));
-chamber o2(.in(Source), .out(w2));
-heater o3(.in(Source), .out(w3));
-filter o4(.in(Source), .out(w3));
-chamber o5(.in(Source), .out(w4));
-filter o6(.in(Source), .out(w5));
-heater o7(.in(Source), .out(w5));
-heater o8(.in(Source), .out(w6));
-chamber o9(.in(Source), .out(w6));
-chamber o10(.in(Source), .out(w7));
-chamber o11(.in(Source), .out(w8));
+chamber o1(.in(incoming), .out(w1));
+chamber o2(.in(incoming), .out(w2));
+heater o3(.in(incoming), .out(w3));
+filter o4(.in(incoming), .out(w3));
+chamber o5(.in(incoming), .out(w4));
+filter o6(.in(incoming), .out(w5));
+heater o7(.in(incoming), .out(w5));
+heater o8(.in(incoming), .out(w6));
+chamber o9(.in(incoming), .out(w6));
+chamber o10(.in(incoming), .out(w7));
+chamber o11(.in(incoming), .out(w8));
 
 //Second row
 
-mixer o12(.a(w1), .b(Source), .y(w9));
+mixer o12(.a(w1), .b(incoming), .y(w9));
 filter o13(.in(w2), .out(w20));
 mixer o14(.a(w3), .b(w3), .y(w10));
 filter o15(.in(w4), .out(w11));
@@ -50,6 +50,6 @@ mixer o28(.a(w17), .b(w25), .y(w26));
 mixer o29(.a(w18), .b(w26), .y(w19));
 
 //Seventh row
-heater o30(.in(w19), .out(Out));
+heater o30(.in(w19), .out(outgoing));
 
 endmodule

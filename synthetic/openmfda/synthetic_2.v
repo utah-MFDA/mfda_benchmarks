@@ -1,19 +1,19 @@
 module synthetic_2(
-input Source,
-output Out
+input incoming,
+output outgoing
 );
 
 wire w1,w2,w3,w4,w5,w6,w7,w8,w9,w10,w11,w12,w13,w14,w15,w16,w17,w18,w19;
 
 //first row
-chamber o1(.in(Source), .out(w1));
-chamber o2(.in(Source), .out(w2));
-chamber o3(.in(Source), .out(w3));
-chamber o4(.in(Source), .out(w4));
-heater o5(.in(Source), .out(w13));
-filter o6(.in(Source), .out(w5));
-heater o7(.in(Source), .out(w14));
-chamber o8(.in(Source), .out(w6));
+chamber o1(.in(incoming), .out(w1));
+chamber o2(.in(incoming), .out(w2));
+chamber o3(.in(incoming), .out(w3));
+chamber o4(.in(incoming), .out(w4));
+heater o5(.in(incoming), .out(w13));
+filter o6(.in(incoming), .out(w5));
+heater o7(.in(incoming), .out(w14));
+chamber o8(.in(incoming), .out(w6));
 
 
 //second row
@@ -34,5 +34,5 @@ mixer o18(.a(w10), .b(w18), .y(w12));
 heater o19(.in(w11), .out(w19));
 
 //fifth row
-mixer m20(.a(w12), .b(w19), .y(Out));
+mixer m20(.a(w12), .b(w19), .y(outgoing));
 endmodule
