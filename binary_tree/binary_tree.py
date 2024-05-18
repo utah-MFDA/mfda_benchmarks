@@ -1,11 +1,10 @@
 import sys
 width, depth = [int(i) for i in sys.argv[1:]]
 
-
 def tree(output, depth):
     left = f"{output}__{depth}_l"
     right = f"{output}__{depth}_r"
-    print(f"diffmix_25px_0 mix_{output} (.a_fluid({left}), .b_fluid({right}), .out_fluid({output}));")
+    print(f"mixer mix_{output} (.a({left}), .b({right}), .y({output}));")
     print(f"wire {left}, {right};")
     if depth == 0:
         return [left, right]
