@@ -24,7 +24,7 @@ module kinase_activity(input in1, in2, in3,
   valve v11(.fluid_in(j3), .fluid_out(out2), .air_in(c11));
   valve v12(.fluid_in(vs4o), .fluid_out(out3), .air_in(c12));
   valve v13(.fluid_in(vs4o), .fluid_out(out4), .air_in(c13));
-  chamber cirulate1(.in(vp3o), .out(j5));
+  chamber circulate1(.in(vp3o), .out(j5));
   chamber circulate2(.in(v5o), .out(circ2o));
   chamber column_upper(.in(vp4o), .out(cuo));
   chamber column_lower(.in(vs3o), .out(clo));

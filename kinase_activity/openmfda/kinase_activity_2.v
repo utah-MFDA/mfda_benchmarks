@@ -1,4 +1,4 @@
-module kinase_activity_2(input in1_a, in2_a, in3_a,
+module kinase_activity_2_device(input in1_a, in2_a, in3_a,
                          input in1_b, in2_b, in3_b,
                          c1, c2, c3, c4, c5, c6,
                          c7, c8, c9, c10, c11, c12, c13,
