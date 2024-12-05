@@ -71,7 +71,7 @@ module ChIP10(inout inlet1, inlet2, inlet3, inlet4, inlet5, inlet6,
                .inlet_ctrl(stage_inlet_ctrl), .outlet_ctrl(stage_outlet_ctrl), .bead_ctrl(bead_ctrl),
                .pump1(pump1), .pump2(pump2), .pump3(pump3),
                .ring_in(j2), .inlet(inlet8), .bead_in(bead_in), .outlet(outlet10), .collect(collect8));
-  chamber chamber9(.ring_in_ctrl(stage_in_ctrl),
+  reaction_chamber chamber9(.ring_in_ctrl(stage_in_ctrl),
                .ring_out_ctrl(stage_out_ctrl), .sieve_ctrl(sieve_ctrl),
                .collect_ctrl(collect_ctrl),
                .inlet_ctrl(stage_inlet_ctrl), .outlet_ctrl(stage_outlet_ctrl), .bead_ctrl(bead_ctrl),
