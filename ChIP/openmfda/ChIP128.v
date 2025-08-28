@@ -904,6 +904,7 @@ c_inlet128, c_outlet128, c_collect128
                .ring_out_ctrl(stage_out_ctrl), .sieve_ctrl(sieve_ctrl),
                .collect_ctrl(collect_ctrl),
                .inlet_ctrl(stage_inlet_ctrl), .outlet_ctrl(stage_outlet_ctrl), .bead_ctrl(bead_ctrl),
+
                .pump1(pump1), .pump2(pump2), .pump3(pump3),
                .ring_in(j2), .inlet(c_inlet1), .bead_in(bead_in), .outlet(c_outlet126), .collect(c_collect126));
   reaction_chamber chamber127(.ring_in_ctrl(stage_in_ctrl),

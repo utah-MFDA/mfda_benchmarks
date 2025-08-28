@@ -1,22 +1,13 @@
-module kinase_activity_2_device(input in1_a, in2_a, in3_a,
-                         input in1_b, in2_b, in3_b,
-                         c1, c2, c3, c4, c5, c6,
-                         c7, c8, c9, c10, c11, c12, c13,
-                         s1, s2, s3, s4,
-                         p1, p2, p3, p4, p5,
-                         output out1_a, out2_a, out3_a, out4_a,
-                         out1_b, out2_b, out3_b, out4_b);
+module kinase_activity_2_device (
+            input [12:0] ctrl_a,
+            input [3:0] ctrl_s,
+            input [2:0] pump_a,
+            input [1:0] pump_b,
+            output [2:0] flow_in [1:0],
+            output [3:0] flow_out [1:0],
+            output [21:0] flush,
 
-  kinase_activity one(in1_a, in2_a, in3_a,
-                      c1, c2, c3, c4, c5, c6,
-                      c7, c8, c9, c10, c11, c12, c13,
-                      s1, s2, s3, s4,
-                      p1, p2, p3, p4, p5,
-                      out1_a, out2_a, out3_a, out4_a);
-  kinase_activity two(in1_b, in2_b, in3_b,
-                      c1, c2, c3, c4, c5, c6,
-                      c7, c8, c9, c10, c11, c12, c13,
-                      s1, s2, s3, s4,
-                      p1, p2, p3, p4, p5,
-                      out1_b, out2_b, out3_b, out4_b);
+  kinase_activity device_0(flow_in[0], flow_out[0], ctrl_a, ctrl_s, pump_a, pump_b, flush);
+
+  kinase_activity device_1(flow_in[1], flow_out[1], ctrl_a, ctrl_s, pump_a, pump_b, flush);
 endmodule
