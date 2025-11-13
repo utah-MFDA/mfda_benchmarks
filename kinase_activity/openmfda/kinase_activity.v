@@ -10,10 +10,10 @@ module kinase_activity((* type="flow" *) input flow_in_a, flow_in_b, flow_in_c,
                        (* type="flush" *) output [1:0] flush_pump_b);
 
   (* type="flow" *) wire j1, j2, j3, j4, j5;
-  (* type="flow" *) wire v1o, v2o, v3o, v4o, v5o, v6o, v7o, v9o, v10o, v11o;
-  (* type="flow" *) wire vs1o, vs2o, vs3o, vs4o;
+  (* type="flow" *) wire v5o, v6o, v10o;
+  (* type="flow" *) wire vs1o, vs3o, vs4o;
   (* type="flow" *) wire vp1o, vp2o, vp3o, vp4o, vp5o;
-  (* type="flow" *) wire circ1o, circ2o;
+  (* type="flow" *) wire circ2o;
   (* type="flow" *) wire cuo, clo;
   valve v0(.fluid_in(vs4o), .fluid_out(flow_out_d), .air_in(ctrl_a[0]), .air_out(flush_ctrl_a[0]));
   valve v1(.fluid_in(flow_in_a), .fluid_out(j4), .air_in(ctrl_a[1]), .air_out(flush_ctrl_a[1]));

@@ -8,35 +8,37 @@ module mnacidpro_reactor(
   (* type="flow" *) input drive, bead_in, buffer_in, cell_in,
   (* type="flow" *) output collect, waste, bead_out, buffer_out, cell_out);
 
-  (* type="flow" *) wire r1,r2,r3,r4,r5;
+  (* type="flow" *) wire r1,r2,r3,r4,r5, j1, j2;
 
   (* type="ctrl" *) wire c1, c2, c3;
-  valve v1(.fluid_in(drive), .fluid_out(r3), .air_in(horiz_ctrl), .air_out(c1));
+  valve v1(.fluid_in(drive), .fluid_out(r3), .air_in(vertical_ctrl), .air_out(c1));
   valve v2(.fluid_in(r3), .fluid_out(r2), .air_in(c1), .air_out(c2));
-  valve v3(.fluid_in(r2), .fluid_out(r1), .air_in(c2), .air_out(horiz_flush));
+  valve v3(.fluid_in(r2), .fluid_out(r1), .air_in(c2), .air_out(vertical_flush));
 
-  (* type="ctrl" *) wire d1,d2,d3,d4,d5;
+  (* type="ctrl" *) wire d1,d2,d3,d5;
   valve v4(.fluid_in(buffer_in), .fluid_out(r3), .air_in(horiz_ctrl), .air_out(d1));
   valve v5(.fluid_in(r3), .fluid_out(buffer_out), .air_in(d1), .air_out(d2));
   valve v6(.fluid_in(cell_in), .fluid_out(r2), .air_in(d2), .air_out(d3));
-  valve v7(.fluid_in(r2), .fluid_out(cell_out), .air_in(d3), .air_out(d4));
-  valve v8(.fluid_in(bead_in), .fluid_out(r4), .air_in(d4), .air_out(d5));
-  valve v9(.fluid_in(r4), .fluid_out(bead_out), .air_in(d5), .air_out(horiz_flush));
-
+  valve v7(.fluid_in(r2), .fluid_out(cell_out), .air_in(d3), .air_out(horiz_flush));
+  valve v8(.fluid_in(bead_in), .fluid_out(r4), .air_in(bead_ctrl), .air_out(d5));
+  valve v9(.fluid_in(r4), .fluid_out(bead_out), .air_in(d5), .air_out(bead_flush));
+  pump_valve p0(.fluid_in(r1), .fluid_out(j1), .air_in(pump[0]), .air_out(pump_flush[0]));
+  pump_valve p1(.fluid_in(r1), .fluid_out(j2), .air_in(pump[1]), .air_out(pump_flush[1]));
+  pump_valve p2(.fluid_in(j2), .fluid_out(r1), .air_in(pump[2]), .air_out(pump_flush[2]));
   (* type="ctrl" *) wire e1;
   valve v10(.fluid_in(r1), .fluid_out(r4), .air_in(loop_exit_ctrl), .air_out(loop_exit_flush));
   valve v11(.fluid_in(r4), .fluid_out(r5), .air_in(bead_trap_ctrl), .air_out(bead_trap_flush));
   valve v12(.fluid_in(r5), .fluid_out(waste), .air_in(waste_ctrl), .air_out(waste_flush));
-  valve v13(.fluid_in(r5), .fluid_out(collect), .air_in(collect_flush), .air_out(collect_flush));
+  valve v13(.fluid_in(r5), .fluid_out(collect), .air_in(collect_ctrl), .air_out(collect_flush));
 
 endmodule
 
 module mnacidpro((* type="ctrl" *) input lysis_ctrl, wash_ctrl, elute_ctrl, dead_end_ctrl,
                  vertical_ctrl, horiz_ctrl, waste_ctrl, bead_ctrl, loop_exit_ctrl, bead_trap_ctrl, collect_ctrl,
                  (* type="ctrl" *) input [2:0] pump,
-                  (* type="flush" *) input lysis_flush, wash_flush, elute_flush, dead_end_flush,
+                  (* type="flush" *) output lysis_flush, wash_flush, elute_flush, dead_end_flush,
                  vertical_flush, horiz_flush, waste_flush, bead_flush, loop_exit_flush, bead_trap_flush, collect_flush,
-                 (* type="flush" *) input [2:0] pump_flush,
+                 (* type="flush" *) output [2:0] pump_flush,
                  (* type="flow" *) input bead_in, buffer_in, cell_in,
                  (* type="flow" *) input lysis_in, wash_in, elute_in,
                  (* type="flow" *) output [SIZE-1:0] collect,
@@ -82,7 +84,7 @@ module mnacidpro((* type="ctrl" *) input lysis_ctrl, wash_ctrl, elute_ctrl, dead
 
   valve lysis(.fluid_in(lysis_in), .fluid_out(drive), .air_in(lysis_ctrl), .air_out(lysis_flush));
   valve wash(.fluid_in(wash_in), .fluid_out(drive), .air_in(wash_ctrl), .air_out(wash_flush));
-  valve buffer(.fluid_in(buffer_in), .fluid_out(drive), .air_in(elute_ctrl), .air_out(elute_flush));
+  valve elute(.fluid_in(elute_in), .fluid_out(drive), .air_in(elute_ctrl), .air_out(elute_flush));
 
   generate
     genvar i;
