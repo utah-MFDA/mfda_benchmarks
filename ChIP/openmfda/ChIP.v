@@ -41,15 +41,16 @@ module reaction_chamber((* type="ctrl" *) input ctrl_ring_in,
                         (* type="flush" *) output [2:0] flush_pump,
                         (* type="flow" *) input flow_ring_in, flow_inlet, bead_in,
                         (* type="flow" *) output flow_outlet, collect);
-  (* type="flow" *) wire j1, j2, j3, j4, j5;
+  (* type="flow" *) wire j1,j1o, j2, j3, j4, j5;
+  chamber ring(.fluid_in(j1), .fluid_out(j1o));
   valve vring_in(.fluid_in(flow_ring_in), .fluid_out(j1), .air_in(ctrl_ring_in), .air_out(flush_ring_in));
-  pump #(1) vpump1 (.inlet(j1), .outlet(j2), .drive(pump[0]), .flush(flush_pump[0]));
+  pump #(1) vpump1 (.inlet(j1o), .outlet(j2), .drive(pump[0]), .flush(flush_pump[0]));
   pump #(1) vpump2 (.inlet(j2), .outlet(j3), .drive(pump[1]), .flush(flush_pump[1]));
   pump #(1) vpump3 (.inlet(j3), .outlet(j1), .drive(pump[2]), .flush(flush_pump[2]));
   valve vinlet(.fluid_in(flow_inlet), .fluid_out(j2), .air_in(ctrl_inlet), .air_out(flush_inlet));
   valve voutlet(.fluid_in(flow_outlet), .fluid_out(j3), .air_in(ctrl_outlet), .air_out(flush_outlet));
   valve vbead(.fluid_in(bead_in), .fluid_out(j2), .air_in(ctrl_bead), .air_out(flush_bead));
-  valve vring_out(.fluid_in(j1), .fluid_out(j4), .air_in(ctrl_ring_out), .air_out(flush_ring_out));
+  valve vring_out(.fluid_in(j1o), .fluid_out(j4), .air_in(ctrl_ring_out), .air_out(flush_ring_out));
   sieve_valve vsieve(.fluid_in(j4), .fluid_out(j5), .air_in(ctrl_sieve), .air_out(flush_sieve));
   valve vcollect(.fluid_in(j5), .fluid_out(collect), .air_in(ctrl_collect), .air_out(flush_collect));
 endmodule
@@ -58,14 +59,16 @@ module prep_chamber((* type="flow" *) input flow_inlet,
                     (* type="ctrl" *) input ctrl_v1, ctrl_v2, ctrl_sv1, ctrl_inlet, ctrl_outlet1, ctrl_outlet2, ctrl_ringout,
                     (* type="flush" *) output flush_v1, flush_v2, flush_sv1, flush_inlet, flush_outlet1, flush_outlet2, flush_ringout,
                     (* type="flow" *) output  flow_outlet1, flow_outlet2, flow_ringout);
-  (* type="flow" *) wire j1, j2, j3;
+  (* type="flow" *) wire j1, j2, j3, j4;
+  chamber ring(.fluid_in(j3), .fluid_out(j4));
   valve vin(.fluid_in(flow_inlet), .fluid_out(j1), .air_in(ctrl_inlet), .air_out(flush_inlet));
   valve vout1(.fluid_in(j1), .fluid_out(flow_outlet1), .air_in(ctrl_outlet1), .air_out(flush_outlet1));
-  valve vout2(.fluid_in(j3), .fluid_out(flow_outlet2), .air_in(ctrl_outlet2), .air_out(flush_outlet2));
-  valve v1(.fluid_in(j1), .fluid_out(j2), .air_in(ctrl_v1), .air_out(flush_v1));
-  valve v2(.fluid_in(j2), .fluid_out(j3), .air_in(ctrl_v2), .air_out(flush_v2));
-  valve sv1(.fluid_in(j2), .fluid_out(j3), .air_in(ctrl_sv1), .air_out(flush_sv1));
-  valve vout3(.fluid_in(j3), .fluid_out(flow_ringout), .air_in(ctrl_ringout), .air_out(flush_ringout));
+  valve vout2(.fluid_in(j2), .fluid_out(flow_outlet2), .air_in(ctrl_outlet2), .air_out(flush_outlet2));
+  valve v1(.fluid_in(j1), .fluid_out(j3), .air_in(ctrl_v1), .air_out(flush_v1));
+  valve v2(.fluid_in(j2), .fluid_out(j1), .air_in(ctrl_v2), .air_out(flush_v2));
+  valve sv1(.fluid_in(j4), .fluid_out(j2), .air_in(ctrl_sv1), .air_out(flush_sv1));
+  valve vout3(.fluid_in(j4), .fluid_out(flow_ringout), .air_in(ctrl_ringout), .air_out(flush_ringout));
+
 endmodule
 
 module ChIP((* type="flow" *) input [4:0] prep_inlet,
@@ -90,11 +93,11 @@ module ChIP((* type="flow" *) input [4:0] prep_inlet,
              flush_stage_in,
              flush_stage_out, flush_sieve,
              flush_collect,
-             flush_stage_inlet, flush_sage_outlet, flush_bead,
+             flush_stage_inlet, flush_stage_outlet, flush_bead,
             flush_prep_ringout,
              (* type="flush" *) output [1:0] flush_prep_outlet,
              (* type="flush" *) output [2:0] flush_pump);
-  parameter SIZE = 4;
+  parameter SIZE = 1;
 
   (* type="ctrl" *) wire inter_stage_in [SIZE:0];
   assign inter_stage_in[0] = ctrl_stage_in;
@@ -113,12 +116,12 @@ module ChIP((* type="flow" *) input [4:0] prep_inlet,
   assign flush_stage_inlet = inter_stage_inlet[SIZE];
   (* type="ctrl" *) wire inter_stage_outlet [SIZE:0];
   assign inter_stage_outlet[0] = ctrl_stage_outlet;
-  assign flush_sage_outlet = inter_sage_outlet[SIZE];
+  assign flush_stage_outlet = inter_stage_outlet[SIZE];
   (* type="ctrl" *) wire inter_bead [SIZE:0];
   assign inter_bead[0] = ctrl_bead;
   assign flush_bead = inter_bead[SIZE];
   (* type="ctrl" *) wire [2:0] inter_pump [SIZE:0];
-  assign inter_pump[0] = ctrl_pump;
+  assign inter_pump[0] = pump;
   assign flush_pump = inter_pump[SIZE];
 
 
@@ -168,6 +171,7 @@ module ChIP((* type="flow" *) input [4:0] prep_inlet,
                                        .flow_ring_in(prep_to_ring),
                                        .flow_inlet(ring_inlet[i]),
                                        .flow_outlet(ring_outlet[i]),
+                                      .bead_in(bead_in),
                                        .collect(collect[i]));
     end
   endgenerate
